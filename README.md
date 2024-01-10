@@ -4,4 +4,4 @@
 3. For server folder
    1. Run **npm init**
    2. Then **npm install**
-   3. **npm run hmr**
+   3. Then **npm run hmr**
