@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 
 export default function Register() {
 
@@ -15,10 +16,12 @@ export default function Register() {
   const [email,setemail] = useState("");
   const [password, setpassword] = useState("");
 
+  const navigate = useNavigate()
+
   const handlesubmit = async (e) => {
     e.preventDefault();
     axios.post('http://localhost:3000/auth/register', {name,email,password})
-    .then(result => console.log(result))
+    .then(result => navigate('/login'))
     .catch(err => console.log(err))
   }
 
@@ -69,14 +72,14 @@ export default function Register() {
               autoComplete="current-password"
               onChange={(e) => setpassword(e.target.value)}
             />
-            <Button
+            <Link href = "/login"><Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign Up
-            </Button>
+            </Button></Link>
             <Grid container>
               <Grid item>
                 <Link href="/login" variant="body2">
